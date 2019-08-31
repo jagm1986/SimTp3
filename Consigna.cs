@@ -16,5 +16,15 @@ namespace TP3_SIM
         {
             InitializeComponent();
         }
+
+        private void Consigna_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
