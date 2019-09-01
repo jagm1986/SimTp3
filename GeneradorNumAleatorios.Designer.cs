@@ -137,6 +137,8 @@
             this.TextBoxA.Size = new System.Drawing.Size(121, 20);
             this.TextBoxA.TabIndex = 24;
             this.TextBoxA.TextChanged += new System.EventHandler(this.TextBoxA_TextChanged);
+            this.TextBoxA.Hide();
+
             // 
             // TextBoxB
             // 
@@ -145,6 +147,8 @@
             this.TextBoxB.Size = new System.Drawing.Size(121, 20);
             this.TextBoxB.TabIndex = 23;
             this.TextBoxB.TextChanged += new System.EventHandler(this.TextBoxB_TextChanged);
+            this.TextBoxB.Hide();
+
             // 
             // Lambda
             // 
@@ -153,7 +157,8 @@
             this.Lambda.Name = "Lambda";
             this.Lambda.Size = new System.Drawing.Size(45, 13);
             this.Lambda.TabIndex = 0;
-            this.Lambda.Text = "Lambda";
+            this.Lambda.Text = "";
+
             // 
             // TextBoxLambda
             // 
@@ -162,6 +167,7 @@
             this.TextBoxLambda.Size = new System.Drawing.Size(121, 20);
             this.TextBoxLambda.TabIndex = 20;
             this.TextBoxLambda.TextChanged += new System.EventHandler(this.TextBoxLambda_TextChanged);
+            this.TextBoxLambda.Hide();
             // 
             // TextBoxDesviacion
             // 
@@ -170,6 +176,7 @@
             this.TextBoxDesviacion.Size = new System.Drawing.Size(121, 20);
             this.TextBoxDesviacion.TabIndex = 21;
             this.TextBoxDesviacion.TextChanged += new System.EventHandler(this.TextBoxDesviacion_TextChanged);
+            this.TextBoxDesviacion.Hide();
             // 
             // TextBoxMedia
             // 
@@ -178,6 +185,7 @@
             this.TextBoxMedia.Size = new System.Drawing.Size(121, 20);
             this.TextBoxMedia.TabIndex = 22;
             this.TextBoxMedia.TextChanged += new System.EventHandler(this.TextBoxMedia_TextChanged);
+            this.TextBoxMedia.Hide();
             // 
             // Desviacion
             // 
@@ -186,7 +194,7 @@
             this.Desviacion.Name = "Desviacion";
             this.Desviacion.Size = new System.Drawing.Size(60, 13);
             this.Desviacion.TabIndex = 2;
-            this.Desviacion.Text = "Desviacion";
+            this.Desviacion.Text = "";
             // 
             // B
             // 
@@ -195,7 +203,7 @@
             this.B.Name = "B";
             this.B.Size = new System.Drawing.Size(14, 13);
             this.B.TabIndex = 0;
-            this.B.Text = "B";
+            this.B.Text = "";
             // 
             // Media
             // 
@@ -204,7 +212,7 @@
             this.Media.Name = "Media";
             this.Media.Size = new System.Drawing.Size(36, 13);
             this.Media.TabIndex = 0;
-            this.Media.Text = "Media";
+            this.Media.Text = "";
             // 
             // A
             // 
@@ -213,7 +221,7 @@
             this.A.Name = "A";
             this.A.Size = new System.Drawing.Size(14, 13);
             this.A.TabIndex = 1;
-            this.A.Text = "A";
+            this.A.Text = "";
             // 
             // Distribucion
             // 
