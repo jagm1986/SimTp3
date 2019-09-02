@@ -15,6 +15,7 @@ namespace TP3_SIM
 
     public partial class GeneradorNumAleatorios : Form
     {
+        public static int LIMITE_NUMERICO_TEXTBOX = 999999;
         public GeneradorNumAleatorios()
         {
             InitializeComponent();
@@ -155,13 +156,14 @@ namespace TP3_SIM
                 {
                     case "Normal":
                         numeros = g.calcularNormal(int.Parse(TextBoxValores.Text), double.Parse(TextBoxDesviacion.Text), double.Parse(TextBoxMedia.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text),distribucion );
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), double.Parse(TextBoxMedia.Text), double.Parse(TextBoxDesviacion.Text), distribucion );
                        
                         break;
 
                     case "Exponencial":
-                        numeros = g.calcularExponencial(int.Parse(TextBoxValores.Text), double.Parse(TextBoxMedia.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), distribucion );
+                        double lambda_ = 1/double.Parse(TextBoxMedia.Text);  // cambiar por double.Parse(TextBoxLambda.Text)
+                        numeros = g.calcularExponencial(int.Parse(TextBoxValores.Text), 1/lambda_);
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), 1/lambda_,1/Math.Pow(lambda_,2) , distribucion );
                         break;
 
                     case "Poisson":
@@ -180,8 +182,10 @@ namespace TP3_SIM
                         break;
 
                     case "Uniforme":
-                        numeros = g.calcularUniforme(int.Parse(TextBoxValores.Text), double.Parse(TextBoxA.Text), double.Parse(TextBoxB.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text),distribucion );
+                        double a = double.Parse(TextBoxA.Text);
+                        double b = double.Parse(TextBoxB.Text);
+                        numeros = g.calcularUniforme(int.Parse(TextBoxValores.Text), a,b);
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), (b+a)/2.0, Math.Pow(b-a,2)/2.0, distribucion );
                         break;
 
                     default:
@@ -211,9 +215,9 @@ namespace TP3_SIM
             Boolean ret = true;
             if (ComboBoxDistribucion.Text == "Normal")
             {
-                if (TextBoxDesviacion.Text == "" || double.Parse(TextBoxDesviacion.Text) > 999999)
+                if (TextBoxDesviacion.Text == "" || double.Parse(TextBoxDesviacion.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
-                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > 999999)
+                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
 
 
@@ -231,9 +235,9 @@ namespace TP3_SIM
             {
                
 
-               if (TextBoxA.Text == "" || double.Parse(TextBoxA.Text) > 999999 )
+               if (TextBoxA.Text == "" || double.Parse(TextBoxA.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
-                if (TextBoxB.Text == "" || double.Parse(TextBoxA.Text) > 999999)
+                if (TextBoxB.Text == "" || double.Parse(TextBoxA.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
             
               
@@ -242,7 +246,7 @@ namespace TP3_SIM
 
             if (ComboBoxDistribucion.Text == "Poisson")
             {
-                if (TextBoxLambda.Text == "" || double.Parse(TextBoxLambda.Text) > 999999)
+                if (TextBoxLambda.Text == "" || double.Parse(TextBoxLambda.Text) > LIMITE_NUMERICO_TEXTBOX)
                     if (TextBoxMedia.Text == "")
                     {
 
@@ -253,13 +257,13 @@ namespace TP3_SIM
 
             if (ComboBoxDistribucion.Text == "Exponencial")
             {
-                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > 999999)
+                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
             }
 
-            if (TextBoxValores.Text == "" || double.Parse(TextBoxValores.Text) > 999999)
+            if (TextBoxValores.Text == "" || double.Parse(TextBoxValores.Text) > LIMITE_NUMERICO_TEXTBOX)
                 ret = false;
-            if (TextBoxIntervalos.Text == "" || double.Parse(TextBoxIntervalos.Text) > 999999)
+            if (TextBoxIntervalos.Text == "" || double.Parse(TextBoxIntervalos.Text) > LIMITE_NUMERICO_TEXTBOX)
                 ret = false;
 
             return ret;
