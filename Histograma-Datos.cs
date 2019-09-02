@@ -280,11 +280,11 @@ namespace TP3_SIM
             if (chiSq <= chiTabla)
             {
                 labelResultadoChi.Text = chiSq + " - " + chiTabla;
-                labelResChiTexto.Text = "Hipotesis Aceptada";
+                labelResChiTexto.Text = "Hipótesis Aceptada";
             } else
             {
                 labelResultadoChi.Text = chiSq + " - " + chiTabla;
-                labelResChiTexto.Text="Hipotesis Rechazada";
+                labelResChiTexto.Text="Hipótesis Rechazada";
             }
         }
     }
