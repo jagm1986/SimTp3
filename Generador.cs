@@ -53,24 +53,10 @@ namespace TP3_SIM
             {
                 double valor = rnd.NextDouble();
                 numeros[i] = truncar(valor,dec);
-                //numeros[i] = ((double)((int)(valor * 1000000))) / 1000000;
+                
             }
         }
 
-        //Funcion auxiliar para la generacion de numeros con distribucion normal
-        private double[] generarRandomExtra(int tope, int dec)
-        {
-            double[] randomExtra = new double[tope];
-            Random rnd = new Random();
-
-            for (int i = 0; i < tope; i++)
-            {
-                double valor = rnd.NextDouble();
-                randomExtra[i] = truncar(valor, dec);
-                //numeros[i] = ((double)((int)(valor * 1000000))) / 1000000;
-            }
-            return randomExtra;
-        }
 
         private double truncar(double number, int decimales)
         {
@@ -115,30 +101,15 @@ namespace TP3_SIM
         public double[] calcularNormal(int tope, double desviacion, double media)
         {
             calcularLenguaje(tope,6);
-            double[] aux = generarRandomExtra(tope,6);
-            double z = 0, valor = 0;
+            Random rnd = new Random();
+            //double[] aux = generarRandomExtra(tope,6);
+            double z, valor;
             for (int i = 0; i < numeros.Length; i++)
             {
-                z = (Math.Sqrt(-2 * Math.Log(numeros[i])) * Math.Cos(2 * Math.PI * aux[i]));
+                z = Math.Sqrt(-2 * Math.Log(numeros[i])) * Math.Cos(2 * Math.PI * rnd.NextDouble()) ;
                 valor = media + z * desviacion;
                 numeros[i] = truncar(valor,4);
             }
-            //double[] aux = generarRandomExtra(tope * 12, 6);
-            //int a = 0;
-            //double acumula = 0;
-
-            //for (int i = 0; i < aux.Length; i++)
-            //{
-            //    acumula += aux[i];
-
-            //    if ((i + 1) % 12 == 0)
-            //    {
-            //        double valor = ((acumula + 6) * desviacion) + media;
-            //        numeros[a] = ((double)((int)(valor * 10000))) / 10000;
-            //        a++;
-            //        acumula = 0;
-            //    }
-            //}
             return numeros;
         }
 

@@ -108,7 +108,7 @@
             this.listValores.FormattingEnabled = true;
             this.listValores.Location = new System.Drawing.Point(6, 37);
             this.listValores.Name = "listValores";
-            this.listValores.Size = new System.Drawing.Size(93, 420);
+            this.listValores.Size = new System.Drawing.Size(93, 381);
             this.listValores.TabIndex = 1;
             // 
             // listIntervalos
@@ -116,13 +116,13 @@
             this.listIntervalos.FormattingEnabled = true;
             this.listIntervalos.Location = new System.Drawing.Point(105, 37);
             this.listIntervalos.Name = "listIntervalos";
-            this.listIntervalos.Size = new System.Drawing.Size(274, 420);
+            this.listIntervalos.Size = new System.Drawing.Size(274, 381);
             this.listIntervalos.TabIndex = 2;
             this.listIntervalos.SelectedIndexChanged += new System.EventHandler(this.listIntervalos_SelectedIndexChanged);
             // 
             // btn_SalirHist
             // 
-            this.btn_SalirHist.Location = new System.Drawing.Point(967, 432);
+            this.btn_SalirHist.Location = new System.Drawing.Point(967, 385);
             this.btn_SalirHist.Name = "btn_SalirHist";
             this.btn_SalirHist.Size = new System.Drawing.Size(75, 23);
             this.btn_SalirHist.TabIndex = 3;
@@ -173,7 +173,7 @@
             // lblChiCuadrado
             // 
             this.lblChiCuadrado.AutoSize = true;
-            this.lblChiCuadrado.Location = new System.Drawing.Point(951, 278);
+            this.lblChiCuadrado.Location = new System.Drawing.Point(948, 277);
             this.lblChiCuadrado.Name = "lblChiCuadrado";
             this.lblChiCuadrado.Size = new System.Drawing.Size(123, 13);
             this.lblChiCuadrado.TabIndex = 8;
@@ -182,7 +182,7 @@
             // labelResultadoChi
             // 
             this.labelResultadoChi.AutoSize = true;
-            this.labelResultadoChi.Location = new System.Drawing.Point(949, 312);
+            this.labelResultadoChi.Location = new System.Drawing.Point(948, 311);
             this.labelResultadoChi.Name = "labelResultadoChi";
             this.labelResultadoChi.Size = new System.Drawing.Size(122, 13);
             this.labelResultadoChi.TabIndex = 9;
@@ -191,17 +191,17 @@
             // labelResChiTexto
             // 
             this.labelResChiTexto.AutoSize = true;
-            this.labelResChiTexto.Location = new System.Drawing.Point(951, 352);
+            this.labelResChiTexto.Location = new System.Drawing.Point(948, 343);
             this.labelResChiTexto.Name = "labelResChiTexto";
-            this.labelResChiTexto.Size = new System.Drawing.Size(99, 13);
+            this.labelResChiTexto.Size = new System.Drawing.Size(108, 13);
             this.labelResChiTexto.TabIndex = 10;
-            this.labelResChiTexto.Text = "Hipotesis Aceptada";
+            this.labelResChiTexto.Text = "Hipotesis Rechazada";
             // 
             // Histograma_Datos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 469);
+            this.ClientSize = new System.Drawing.Size(1092, 428);
             this.Controls.Add(this.labelResChiTexto);
             this.Controls.Add(this.labelResultadoChi);
             this.Controls.Add(this.lblChiCuadrado);

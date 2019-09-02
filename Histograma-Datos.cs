@@ -89,7 +89,7 @@ namespace TP3_SIM
                 double inicio = paso * u;
                 double tope = paso * (u + 1);
                 double mitad = inicio + (paso / 2);
-                chart_hist.Series["Frecuencia"].Points.AddXY(inicio + "-" + tope, acumulados[u]);
+                chart_hist.Series["Frecuencia Observada"].Points.AddXY(inicio + "-" + tope, acumulados[u]);
 
             }
         }
@@ -275,8 +275,8 @@ namespace TP3_SIM
                 intervalos = 4;
             }
             double chiTabla= ChiSquared.InvCDF(intervalos - 1 - param,0.95);
-            Math.Round(chiSq, 4);
-            Math.Round(chiTabla, 4);
+            chiSq=Math.Truncate(chiSq * 10000) / 10000;
+            chiTabla = Math.Truncate(chiTabla * 10000) / 10000;
             if (chiSq <= chiTabla)
             {
                 labelResultadoChi.Text = chiSq + " - " + chiTabla;
