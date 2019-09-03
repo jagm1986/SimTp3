@@ -72,7 +72,7 @@
             this.btnSalir.Location = new System.Drawing.Point(508, 360);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 18;
+            this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -91,7 +91,7 @@
             this.btnGenerar.Location = new System.Drawing.Point(54, 360);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerar.TabIndex = 17;
+            this.btnGenerar.TabIndex = 5;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
@@ -107,7 +107,7 @@
             this.ComboBoxDistribucion.Location = new System.Drawing.Point(171, 48);
             this.ComboBoxDistribucion.Name = "ComboBoxDistribucion";
             this.ComboBoxDistribucion.Size = new System.Drawing.Size(121, 21);
-            this.ComboBoxDistribucion.TabIndex = 10;
+            this.ComboBoxDistribucion.TabIndex = 0;
             this.ComboBoxDistribucion.Text = "Seleccione";
             this.ComboBoxDistribucion.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDistribucion_SelectedIndexChanged);
             // 
@@ -126,7 +126,7 @@
             this.GroupBoxParametros.Location = new System.Drawing.Point(44, 181);
             this.GroupBoxParametros.Name = "GroupBoxParametros";
             this.GroupBoxParametros.Size = new System.Drawing.Size(539, 135);
-            this.GroupBoxParametros.TabIndex = 16;
+            this.GroupBoxParametros.TabIndex = 4;
             this.GroupBoxParametros.TabStop = false;
             this.GroupBoxParametros.Text = "Parametros";
             // 
@@ -135,16 +135,20 @@
             this.TextBoxA.Location = new System.Drawing.Point(343, 27);
             this.TextBoxA.Name = "TextBoxA";
             this.TextBoxA.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxA.TabIndex = 24;
+            this.TextBoxA.TabIndex = 3;
             this.TextBoxA.TextChanged += new System.EventHandler(this.TextBoxA_TextChanged);
+            this.TextBoxA.Hide();
+
             // 
             // TextBoxB
             // 
             this.TextBoxB.Location = new System.Drawing.Point(343, 54);
             this.TextBoxB.Name = "TextBoxB";
             this.TextBoxB.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxB.TabIndex = 23;
+            this.TextBoxB.TabIndex = 4;
             this.TextBoxB.TextChanged += new System.EventHandler(this.TextBoxB_TextChanged);
+            this.TextBoxB.Hide();
+
             // 
             // Lambda
             // 
@@ -153,31 +157,35 @@
             this.Lambda.Name = "Lambda";
             this.Lambda.Size = new System.Drawing.Size(45, 13);
             this.Lambda.TabIndex = 0;
-            this.Lambda.Text = "Lambda";
+            this.Lambda.Text = "";
+
             // 
             // TextBoxLambda
             // 
             this.TextBoxLambda.Location = new System.Drawing.Point(127, 87);
             this.TextBoxLambda.Name = "TextBoxLambda";
             this.TextBoxLambda.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxLambda.TabIndex = 20;
+            this.TextBoxLambda.TabIndex = 2;
             this.TextBoxLambda.TextChanged += new System.EventHandler(this.TextBoxLambda_TextChanged);
+            this.TextBoxLambda.Hide();
             // 
             // TextBoxDesviacion
             // 
             this.TextBoxDesviacion.Location = new System.Drawing.Point(127, 54);
             this.TextBoxDesviacion.Name = "TextBoxDesviacion";
             this.TextBoxDesviacion.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxDesviacion.TabIndex = 21;
+            this.TextBoxDesviacion.TabIndex = 1;
             this.TextBoxDesviacion.TextChanged += new System.EventHandler(this.TextBoxDesviacion_TextChanged);
+            this.TextBoxDesviacion.Hide();
             // 
             // TextBoxMedia
             // 
             this.TextBoxMedia.Location = new System.Drawing.Point(127, 22);
             this.TextBoxMedia.Name = "TextBoxMedia";
             this.TextBoxMedia.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxMedia.TabIndex = 22;
+            this.TextBoxMedia.TabIndex = 0;
             this.TextBoxMedia.TextChanged += new System.EventHandler(this.TextBoxMedia_TextChanged);
+            this.TextBoxMedia.Hide();
             // 
             // Desviacion
             // 
@@ -186,7 +194,7 @@
             this.Desviacion.Name = "Desviacion";
             this.Desviacion.Size = new System.Drawing.Size(60, 13);
             this.Desviacion.TabIndex = 2;
-            this.Desviacion.Text = "Desviacion";
+            this.Desviacion.Text = "";
             // 
             // B
             // 
@@ -195,7 +203,7 @@
             this.B.Name = "B";
             this.B.Size = new System.Drawing.Size(14, 13);
             this.B.TabIndex = 0;
-            this.B.Text = "B";
+            this.B.Text = "";
             // 
             // Media
             // 
@@ -204,7 +212,7 @@
             this.Media.Name = "Media";
             this.Media.Size = new System.Drawing.Size(36, 13);
             this.Media.TabIndex = 0;
-            this.Media.Text = "Media";
+            this.Media.Text = "";
             // 
             // A
             // 
@@ -213,7 +221,7 @@
             this.A.Name = "A";
             this.A.Size = new System.Drawing.Size(14, 13);
             this.A.TabIndex = 1;
-            this.A.Text = "A";
+            this.A.Text = "";
             // 
             // Distribucion
             // 
@@ -231,7 +239,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(660, 24);
-            this.menuStrip1.TabIndex = 19;
+            this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // menuToolStripMenuItem
@@ -276,7 +284,7 @@
             this.TextBoxValores.Location = new System.Drawing.Point(171, 87);
             this.TextBoxValores.Name = "TextBoxValores";
             this.TextBoxValores.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxValores.TabIndex = 3;
+            this.TextBoxValores.TabIndex = 2;
             this.TextBoxValores.TextChanged += new System.EventHandler(this.TextBoxValores_TextChanged);
             // 
             // TextBoxIntervalos
@@ -284,7 +292,7 @@
             this.TextBoxIntervalos.Location = new System.Drawing.Point(171, 118);
             this.TextBoxIntervalos.Name = "TextBoxIntervalos";
             this.TextBoxIntervalos.Size = new System.Drawing.Size(121, 20);
-            this.TextBoxIntervalos.TabIndex = 23;
+            this.TextBoxIntervalos.TabIndex = 3;
             this.TextBoxIntervalos.TextChanged += new System.EventHandler(this.TextBoxIntervalos_TextChanged);
             // 
             // checkPoisson
@@ -294,7 +302,7 @@
             this.checkPoisson.Location = new System.Drawing.Point(332, 50);
             this.checkPoisson.Name = "checkPoisson";
             this.checkPoisson.Size = new System.Drawing.Size(145, 17);
-            this.checkPoisson.TabIndex = 25;
+            this.checkPoisson.TabIndex = 1;
             this.checkPoisson.Text = "Calcular a partir de media";
             this.checkPoisson.UseVisualStyleBackColor = true;
             this.checkPoisson.CheckedChanged += new System.EventHandler(this.checkPoisson_CheckedChanged);

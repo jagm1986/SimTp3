@@ -15,6 +15,7 @@ namespace TP3_SIM
 
     public partial class GeneradorNumAleatorios : Form
     {
+        public static int LIMITE_NUMERICO_TEXTBOX = 999999;
         public GeneradorNumAleatorios()
         {
             InitializeComponent();
@@ -25,11 +26,11 @@ namespace TP3_SIM
 
         private void GeneradorNumAleatorios_Load(object sender, EventArgs e)
         {
-            TextBoxMedia.Enabled = false;
-            TextBoxDesviacion.Enabled = false;
-            TextBoxLambda.Enabled = false;
-            TextBoxA.Enabled = false;
-            TextBoxB.Enabled = false;
+          //  TextBoxMedia.Enabled = false;
+          //  TextBoxDesviacion.Enabled = false;
+          //  TextBoxLambda.Enabled = false;
+          //  TextBoxA.Enabled = false;
+          //  TextBoxB.Enabled = false;
             TextBoxValores.Enabled  = false;
             TextBoxIntervalos.Enabled  = false;
 
@@ -53,27 +54,79 @@ namespace TP3_SIM
 
         }
 
+        public void HabilitarCampos(String distribucion)
+        {
+            DesHabilitarCampos();
+            TextBoxValores.Enabled = true;
+            TextBoxIntervalos.Enabled = true;
+
+            if (distribucion == "Normal")
+            {
+                Media.Text = "Media";
+                Desviacion.Text = "Desviacion";
+                TextBoxMedia.Show();
+                TextBoxDesviacion.Show();
+
+            } else if(distribucion == "Uniforme")
+            {
+                A.Text = "A";
+                B.Text = "B";
+                TextBoxA.Show();
+                TextBoxB.Show();
+            }
+            else if (distribucion == "Exponencial")
+            {
+                Media.Text = "Media";
+                TextBoxMedia.Show();
+
+            }
+            else if (distribucion == "Poisson")
+            {
+                Lambda.Text = "Lambda";
+                TextBoxLambda.Show();
+
+            }
+            else 
+            {
+               
+            }
+
+
+        }
+
+        public void DesHabilitarCampos()
+        {
+
+                TextBoxMedia.Hide();
+                TextBoxA.Hide();
+                TextBoxB.Hide();
+               // TextBoxValores.Hide();
+                //TextBoxIntervalos.Hide();
+                TextBoxMedia.Hide();
+                TextBoxDesviacion.Hide();
+                TextBoxLambda.Hide();
+                A.Text = "";
+                B.Text = "";
+                Lambda.Text = "";
+                Media.Text = "";
+                Desviacion.Text = "";
+
+
+
+
+        }
+
         private void ComboBoxDistribucion_SelectedIndexChanged(object sender, EventArgs e)
         {
             String distribucion = ComboBoxDistribucion.Text;
+            HabilitarCampos(distribucion);
             switch (distribucion)
             {
                 case "Normal":
                     LimpiarCampos();
-                     TextBoxValores.Enabled  = true ;
                      TextBoxValores.Text = "10000";
-
-                     TextBoxIntervalos.Enabled  = true ;
                      TextBoxIntervalos.Text = "10";
-
-                      TextBoxA.Enabled = false;
-                      
-                      TextBoxB.Enabled = false;
-                     
-                      TextBoxLambda.Enabled = false;
-                      TextBoxMedia.Enabled = true;
                       TextBoxMedia.Text = "28";
-                      TextBoxDesviacion.Enabled = true;
                       TextBoxDesviacion.Text = "2";
                    
                     break;
@@ -81,29 +134,14 @@ namespace TP3_SIM
                 case "Exponencial":
                       LimpiarCampos();
                       TextBoxValores.Text = "10000";
-                      TextBoxValores.Enabled  = true ;
-                      TextBoxIntervalos.Enabled  = true ;
                       TextBoxIntervalos.Text = "10";
-                    
-                      TextBoxMedia.Enabled = true;
                       TextBoxMedia.Text = "2800";
-                      TextBoxDesviacion.Enabled = false;
-                      TextBoxA.Enabled = false;
-                      TextBoxB.Enabled = false;
-                      TextBoxLambda.Enabled = false;
                     break;
 
                 case "Poisson":
                     LimpiarCampos();
                     TextBoxValores.Text = "10000";
-                      TextBoxValores.Enabled  = true ;
-                      TextBoxIntervalos.Enabled  = true ;
                       TextBoxIntervalos.Text = "10";
-                      TextBoxMedia.Enabled = false;
-                      TextBoxA.Enabled = false;
-                      TextBoxB.Enabled = false;
-                      TextBoxDesviacion.Enabled = false;
-                      TextBoxLambda.Enabled = true;
                       TextBoxLambda.Text = "15";
                       checkPoisson.Enabled = true;
                     
@@ -111,23 +149,13 @@ namespace TP3_SIM
 
                 case "Uniforme":
                     LimpiarCampos();
-                    TextBoxValores.Text = "10000";
-                    TextBoxValores.Enabled  = true ;
-                     TextBoxIntervalos.Enabled  = true ;
-                     TextBoxIntervalos.Text = "10";
-                
-                      TextBoxA.Enabled = true;
+                      TextBoxValores.Text = "10000";
+                      TextBoxIntervalos.Text = "10";
                       TextBoxA.Text = "200";
-                      TextBoxB.Enabled = true;
                       TextBoxB.Text = "500";
-                      TextBoxMedia.Enabled = false;
-                      TextBoxDesviacion.Enabled = false;
-                      TextBoxLambda.Enabled = false;
                     break;
 
                 default:
-                      TextBoxValores.Enabled  = true ;
-                      TextBoxIntervalos.Enabled  = true ;
                       TextBoxMedia.Enabled = false;
                       TextBoxDesviacion.Enabled = false;
                       TextBoxLambda.Enabled = false;
@@ -155,13 +183,14 @@ namespace TP3_SIM
                 {
                     case "Normal":
                         numeros = g.calcularNormal(int.Parse(TextBoxValores.Text), double.Parse(TextBoxDesviacion.Text), double.Parse(TextBoxMedia.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text),distribucion );
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), double.Parse(TextBoxMedia.Text), double.Parse(TextBoxDesviacion.Text), distribucion );
                        
                         break;
 
                     case "Exponencial":
-                        numeros = g.calcularExponencial(int.Parse(TextBoxValores.Text), double.Parse(TextBoxMedia.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), distribucion );
+                        double lambda_ = 1/double.Parse(TextBoxMedia.Text);  // cambiar por double.Parse(TextBoxLambda.Text)
+                        numeros = g.calcularExponencial(int.Parse(TextBoxValores.Text), 1/lambda_);
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), 1/lambda_,1/Math.Pow(lambda_,2) , distribucion );
                         break;
 
                     case "Poisson":
@@ -177,11 +206,14 @@ namespace TP3_SIM
 
                         numeros = g.calcularPoisson(int.Parse(TextBoxValores.Text), lmda);
                         histodato.graficarPoisson(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text));
+                        checkPoisson.Enabled = true;
                         break;
 
                     case "Uniforme":
-                        numeros = g.calcularUniforme(int.Parse(TextBoxValores.Text), double.Parse(TextBoxA.Text), double.Parse(TextBoxB.Text));
-                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text),distribucion );
+                        double a = double.Parse(TextBoxA.Text);
+                        double b = double.Parse(TextBoxB.Text);
+                        numeros = g.calcularUniforme(int.Parse(TextBoxValores.Text), a,b);
+                        histodato.graficar(numeros, int.Parse(TextBoxValores.Text), int.Parse(TextBoxIntervalos.Text), (b+a)/2.0, Math.Pow(b-a,2)/2.0, distribucion );
                         break;
 
                     default:
@@ -211,9 +243,9 @@ namespace TP3_SIM
             Boolean ret = true;
             if (ComboBoxDistribucion.Text == "Normal")
             {
-                if (TextBoxDesviacion.Text == "" || double.Parse(TextBoxDesviacion.Text) > 999999)
+                if (TextBoxDesviacion.Text == "" || double.Parse(TextBoxDesviacion.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
-                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > 999999)
+                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
 
 
@@ -231,9 +263,9 @@ namespace TP3_SIM
             {
                
 
-               if (TextBoxA.Text == "" || double.Parse(TextBoxA.Text) > 999999 )
+               if (TextBoxA.Text == "" || double.Parse(TextBoxA.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
-                if (TextBoxB.Text == "" || double.Parse(TextBoxA.Text) > 999999)
+                if (TextBoxB.Text == "" || double.Parse(TextBoxA.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
             
               
@@ -242,7 +274,7 @@ namespace TP3_SIM
 
             if (ComboBoxDistribucion.Text == "Poisson")
             {
-                if (TextBoxLambda.Text == "" || double.Parse(TextBoxLambda.Text) > 999999)
+                if (TextBoxLambda.Text == "" || double.Parse(TextBoxLambda.Text) > LIMITE_NUMERICO_TEXTBOX)
                     if (TextBoxMedia.Text == "")
                     {
 
@@ -253,13 +285,13 @@ namespace TP3_SIM
 
             if (ComboBoxDistribucion.Text == "Exponencial")
             {
-                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > 999999)
+                if (TextBoxMedia.Text == "" || double.Parse(TextBoxMedia.Text) > LIMITE_NUMERICO_TEXTBOX)
                     ret = false;
             }
 
-            if (TextBoxValores.Text == "" || double.Parse(TextBoxValores.Text) > 999999)
+            if (TextBoxValores.Text == "" || double.Parse(TextBoxValores.Text) > LIMITE_NUMERICO_TEXTBOX)
                 ret = false;
-            if (TextBoxIntervalos.Text == "" || double.Parse(TextBoxIntervalos.Text) > 999999)
+            if (TextBoxIntervalos.Text == "" || double.Parse(TextBoxIntervalos.Text) > LIMITE_NUMERICO_TEXTBOX)
                 ret = false;
 
             return ret;
@@ -357,12 +389,27 @@ namespace TP3_SIM
             {
                 TextBoxLambda.Text = "";
                 TextBoxLambda.Enabled = false;
-                TextBoxMedia.Enabled = true;
+                TextBoxMedia.Show();
+                Media.Text = "Media";
+                Lambda.Text = "";
                 lambda = false;
+                TextBoxLambda.Hide();
+
+
             }
             else
             {
                 lambda = true;
+                LimpiarCampos();
+                TextBoxLambda.Enabled = true;
+                Lambda.Text = "Lambda";
+                Media.Text = "";
+                TextBoxMedia.Hide();
+                TextBoxValores.Text = "10000";
+                TextBoxIntervalos.Text = "10";
+                TextBoxLambda.Text = "15";
+                checkPoisson.Enabled = true;
+                TextBoxLambda.Show();
             }
         }     
     }
